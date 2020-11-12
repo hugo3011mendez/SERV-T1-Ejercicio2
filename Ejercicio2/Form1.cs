@@ -89,7 +89,8 @@ namespace Ejercicio2
             }
             catch (Exception)
             {
-                txtInfo.Text = "Has escrito mal el PID del proceso que quieres buscar";   
+                txtInfo.Text = "";
+                MessageBox.Show("Has escrito mal el PID del proceso que quieres buscar");
             }
         }
 
