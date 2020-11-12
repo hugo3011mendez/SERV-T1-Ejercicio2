@@ -103,7 +103,7 @@ namespace Ejercicio2
                 int pid = Convert.ToInt32(txtPID.Text);
                 Process proceso = Process.GetProcessById(pid);
 
-                proceso.Close();
+                proceso.Close(); // Lanzo la petición de cierre al proceso
 
                 txtInfo.Text = "Petición de cierre al proceso enviada correctamente";
             }
@@ -123,7 +123,7 @@ namespace Ejercicio2
                 int pid = Convert.ToInt32(txtPID.Text);
                 Process proceso = Process.GetProcessById(pid);
 
-                proceso.Kill();
+                proceso.Kill(); // Detengo el proceso
 
                 txtInfo.Text = "Proceso detenido correctamente";
             }
@@ -139,12 +139,13 @@ namespace Ejercicio2
         {
             try
             {
-
+                String nombre = txtPID.Text;
+                Process proceso = Process.Start(nombre); // Lanzo directamente el proceso con los caracteres que contiene el TextBox como parámetro
             }
             catch (Exception)
             {
-
-                throw;
+                txtInfo.Text = "";
+                MessageBox.Show("Has escrito mal el nombre o el path del proceso que quieres ejecutar");
             }
         }
     }

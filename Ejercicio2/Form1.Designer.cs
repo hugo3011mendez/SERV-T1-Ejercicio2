@@ -59,11 +59,11 @@
             // 
             this.lblPID.AutoSize = true;
             this.lblPID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblPID.Location = new System.Drawing.Point(94, 9);
+            this.lblPID.Location = new System.Drawing.Point(74, 9);
             this.lblPID.Name = "lblPID";
-            this.lblPID.Size = new System.Drawing.Size(99, 24);
+            this.lblPID.Size = new System.Drawing.Size(119, 24);
             this.lblPID.TabIndex = 2;
-            this.lblPID.Text = "Enter PID :";
+            this.lblPID.Text = "Enter Value :";
             // 
             // btnView
             // 
