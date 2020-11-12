@@ -97,19 +97,55 @@ namespace Ejercicio2
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Guardo lo que el usuario ha introducido en la TextBox y obtengo el proceso indicado
+                int pid = Convert.ToInt32(txtPID.Text);
+                Process proceso = Process.GetProcessById(pid);
 
+                proceso.Close();
+
+                txtInfo.Text = "Petición de cierre al proceso enviada correctamente";
+            }
+            catch (Exception)
+            {
+                txtInfo.Text = "";
+                MessageBox.Show("Has escrito mal el PID del proceso que quieres cerrar");
+            }
         }
 
 
         private void btnKill_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Guardo lo que el usuario ha introducido en la TextBox y obtengo el proceso indicado
+                int pid = Convert.ToInt32(txtPID.Text);
+                Process proceso = Process.GetProcessById(pid);
 
+                proceso.Kill();
+
+                txtInfo.Text = "Proceso detenido correctamente";
+            }
+            catch (Exception)
+            {
+                txtInfo.Text = "";
+                MessageBox.Show("Has escrito mal el PID del proceso que quieres detener");
+            }
         }
 
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
