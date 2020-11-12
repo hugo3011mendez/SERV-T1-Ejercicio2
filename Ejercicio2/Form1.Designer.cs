@@ -40,6 +40,7 @@
             // 
             // txtInfo
             // 
+            this.txtInfo.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInfo.Location = new System.Drawing.Point(98, 38);
             this.txtInfo.Multiline = true;
             this.txtInfo.Name = "txtInfo";
