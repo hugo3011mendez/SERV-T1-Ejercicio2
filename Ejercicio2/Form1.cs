@@ -18,7 +18,7 @@ namespace Ejercicio2
             InitializeComponent();
         }
 
-        private void btnView_Click(object sender, EventArgs e) // Mostrará todos los procesos en ejecución con la siguiente información : PID ,Nombre y titulo de la ventana principal si lo tiene.Aparecerá en columnas bien alineado. Al dar formato, si un nombre o ttulo de ventana ocupa más que lo permitido debe “acortarse” y aparecer con puntos suspensivos.
+        private void btnView_Click(object sender, EventArgs e)
         {
             // Elimino el texto que podía contener y le añado el índice alineado
             txtInfo.Text = "";
@@ -57,7 +57,40 @@ namespace Ejercicio2
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Guardo lo que el usuario ha introducido en la 2a TextBox
+                int pid = Convert.ToInt32(txtPID.Text);
 
+                // Y consigo el proceso en cuestión a partir de su ID
+                Process proceso = Process.GetProcessById(pid);
+
+                txtInfo.Text = ""; // Reinicio el texto que contiene la TextBox de información
+
+                // Empiezo a mostrar la info del proceso
+                txtInfo.AppendText("Nombre del proceso : " + proceso.ProcessName + Environment.NewLine);
+                txtInfo.AppendText("Título de la ventana principal : " + proceso.MainWindowTitle + Environment.NewLine);
+                txtInfo.AppendText("Momento en el que se inició el proceso : " + proceso.StartTime + Environment.NewLine);
+                txtInfo.AppendText(Environment.NewLine);
+                txtInfo.AppendText("----- HILOS -----" + Environment.NewLine + Environment.NewLine);
+
+                // Guardo en una variable los hilos del proceso en cuestión y los recorro
+                ProcessThreadCollection hilos = proceso.Threads;
+                foreach (ProcessThread h in hilos)
+                {
+                    // Muestro la info de sus hilos
+                    txtInfo.AppendText("ID del hilo : " + h.Id + Environment.NewLine);
+                    txtInfo.AppendText("Estado del hilo : " + h.ThreadState + Environment.NewLine);
+                    txtInfo.AppendText("Momento en el que se inició el hilo : " + h.StartTime + Environment.NewLine);
+                    txtInfo.AppendText("Nivel de prioridad del hilo : " + h.PriorityLevel + Environment.NewLine);
+                    txtInfo.AppendText("Tiempo total que el hilo ha estado usando el CPU : " + h.TotalProcessorTime + Environment.NewLine);
+                    txtInfo.AppendText(Environment.NewLine + Environment.NewLine); // Hago un par de saltos de línea para dar separación entre la info de un hilo y otro
+                }
+            }
+            catch (Exception)
+            {
+                txtInfo.Text = "Has escrito mal el PID del proceso que quieres buscar";   
+            }
         }
 
 
