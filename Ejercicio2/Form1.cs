@@ -114,9 +114,9 @@ namespace Ejercicio2
                 int pid = Convert.ToInt32(txtPID.Text);
                 Process proceso = Process.GetProcessById(pid);
 
-                proceso.Close(); // Lanzo la petición de cierre al proceso
+                proceso.CloseMainWindow(); // Lanzo la petición de cierre al proceso
 
-                txtInfo.Text = "Petición de cierre al proceso enviada correctamente";
+                txtInfo.Text = "Petición de cierre al proceso "+ proceso.ProcessName +" enviada correctamente";
             }
             catch (FormatException)
             {
