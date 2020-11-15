@@ -96,9 +96,11 @@ namespace Ejercicio2
                     txtInfo.AppendText(modulo.ModuleName + Environment.NewLine);
                 }
             }
-            catch (Exception)
+            catch (FormatException)
             {
+                // Reinicio los TextBox y muestro el mensaje de error
                 txtInfo.Text = "";
+                txtPID.Text = "";
                 MessageBox.Show("Has escrito mal el PID del proceso que quieres buscar");
             }
         }
@@ -116,9 +118,11 @@ namespace Ejercicio2
 
                 txtInfo.Text = "Petición de cierre al proceso enviada correctamente";
             }
-            catch (Exception)
+            catch (FormatException)
             {
+                // Reinicio los TextBox y muestro el mensaje de error
                 txtInfo.Text = "";
+                txtPID.Text = "";
                 MessageBox.Show("Has escrito mal el PID del proceso que quieres cerrar");
             }
         }
@@ -136,9 +140,11 @@ namespace Ejercicio2
 
                 txtInfo.Text = "Proceso detenido correctamente";
             }
-            catch (Exception)
+            catch (FormatException)
             {
+                // Reinicio los TextBox y muestro el mensaje de error
                 txtInfo.Text = "";
+                txtPID.Text = "";
                 MessageBox.Show("Has escrito mal el PID del proceso que quieres detener");
             }
         }
@@ -151,9 +157,10 @@ namespace Ejercicio2
                 String nombre = txtPID.Text;
                 Process proceso = Process.Start(nombre); // Lanzo directamente el proceso con los caracteres que contiene el TextBox como parámetro
             }
-            catch (Exception)
+            catch (FormatException)
             {
                 txtInfo.Text = "";
+                txtPID.Text = "";
                 MessageBox.Show("Has escrito mal el nombre o el path del proceso que quieres ejecutar");
             }
         }
