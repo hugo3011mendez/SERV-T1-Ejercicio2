@@ -86,6 +86,15 @@ namespace Ejercicio2
                     txtInfo.AppendText("Tiempo total que el hilo ha estado usando el CPU : " + h.TotalProcessorTime + Environment.NewLine);
                     txtInfo.AppendText(Environment.NewLine + Environment.NewLine); // Hago un par de saltos de línea para dar separación entre la info de un hilo y otro
                 }
+
+                // Guardo en una variable los módulos del proceso
+                ProcessModuleCollection modulos = proceso.Modules;
+
+                txtInfo.AppendText(Environment.NewLine + Environment.NewLine + "----- Módulos -----" + Environment.NewLine + Environment.NewLine);
+                foreach (ProcessModule modulo in modulos)
+                {
+                    txtInfo.AppendText(modulo.ModuleName + Environment.NewLine);
+                }
             }
             catch (Exception)
             {
