@@ -22,7 +22,7 @@ namespace Ejercicio2
         {
             // Elimino el texto que podía contener y le añado el índice alineado
             txtInfo.Text = "";
-            txtInfo.AppendText(String.Format("PID{0}Nombre{0}{0}Titulo de ventana", "\t") + Environment.NewLine);
+            txtInfo.AppendText(String.Format("{0,-8}{1,-21}{2,-13}", "PID", "Nombre", "Titulo de ventana") + Environment.NewLine);
 
             // Creo un array que contiene los procesos en ejecución y lo recorro
             Process[] procesosEnEjecucion = Process.GetProcesses();
@@ -43,14 +43,7 @@ namespace Ejercicio2
                 }
 
                 // Añado esas propiedades del proceso dentro una línea para el TextBox
-                if (nombre.Length < 8)
-                {
-                    txtInfo.AppendText(String.Format("{0}{1}{2}{1}{1}{3}", procesosEnEjecucion[i].Id, "\t", nombre, titulo) + Environment.NewLine);
-                }
-                else
-                {
-                    txtInfo.AppendText(String.Format("{0}{1}{2}{1}{3}", procesosEnEjecucion[i].Id, "\t", nombre, titulo) + Environment.NewLine);
-                }
+                    txtInfo.AppendText(String.Format("{0,-8}{1,-21}{2,-13}", procesosEnEjecucion[i].Id, nombre, titulo) + Environment.NewLine);
             }
         }
 
