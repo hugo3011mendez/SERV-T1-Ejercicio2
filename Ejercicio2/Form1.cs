@@ -89,12 +89,28 @@ namespace Ejercicio2
                     txtInfo.AppendText(modulo.ModuleName + Environment.NewLine);
                 }
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
                 // Reinicio los TextBox y muestro el mensaje de error
                 txtInfo.Text = "";
                 txtPID.Text = "";
-                MessageBox.Show("Has escrito mal el PID del proceso que quieres buscar");
+
+                if (ex is FormatException)
+                {
+                    MessageBox.Show("Has escrito mal el PID del proceso que quieres buscar");
+                }
+                else if (ex is OverflowException)
+                {
+                    MessageBox.Show("Has escrito un número demasiado grande!");
+                }
+                else if (ex is ArgumentException)
+                {
+                    MessageBox.Show("No se ha encontrado el proceso con el PID especificado");
+                }
+                else if (ex is Win32Exception)
+                {
+                    MessageBox.Show("No se tienen los permisos necesarios para ver la información este proceso");
+                }
             }
         }
 
@@ -111,12 +127,27 @@ namespace Ejercicio2
 
                 txtInfo.Text = "Petición de cierre al proceso "+ proceso.ProcessName +" enviada correctamente";
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-                // Reinicio los TextBox y muestro el mensaje de error
-                txtInfo.Text = "";
                 txtPID.Text = "";
-                MessageBox.Show("Has escrito mal el PID del proceso que quieres cerrar");
+
+                if (ex is FormatException)
+                {
+                    MessageBox.Show("Has escrito mal el PID del proceso que quieres buscar");
+                }
+                else if (ex is OverflowException)
+                {
+                    MessageBox.Show("Has escrito un número demasiado grande!");
+                }
+                else if (ex is ArgumentException)
+                {
+                    MessageBox.Show("No se ha encontrado el proceso con el PID especificado");
+                }
+                else if (ex is Win32Exception)
+                {
+                    MessageBox.Show("No se tienen los permisos necesarios para cerrar este proceso");
+                }
+
             }
         }
 
@@ -133,12 +164,26 @@ namespace Ejercicio2
 
                 txtInfo.Text = "Proceso detenido correctamente";
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-                // Reinicio los TextBox y muestro el mensaje de error
-                txtInfo.Text = "";
                 txtPID.Text = "";
-                MessageBox.Show("Has escrito mal el PID del proceso que quieres detener");
+
+                if (ex is FormatException)
+                {
+                    MessageBox.Show("Has escrito mal el PID del proceso que quieres buscar");
+                }
+                else if (ex is OverflowException)
+                {
+                    MessageBox.Show("Has escrito un número demasiado grande!");
+                }
+                else if (ex is ArgumentException)
+                {
+                    MessageBox.Show("No se ha encontrado el proceso con el PID especificado");
+                }
+                else if (ex is Win32Exception)
+                {
+                    MessageBox.Show("No se tienen los permisos necesarios para matar a este proceso");
+                }
             }
         }
 
@@ -150,11 +195,23 @@ namespace Ejercicio2
                 String nombre = txtPID.Text;
                 Process proceso = Process.Start(nombre); // Lanzo directamente el proceso con los caracteres que contiene el TextBox como parámetro
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-                txtInfo.Text = "";
                 txtPID.Text = "";
-                MessageBox.Show("Has escrito mal el nombre o el path del proceso que quieres ejecutar");
+
+                if (ex is FormatException)
+                {
+                    MessageBox.Show("Has escrito mal el nombre o el path del proceso que quieres ejecutar, el formato no coincide");
+                }
+                else if (ex is InvalidOperationException)
+                {
+                    MessageBox.Show("El TextBox está vacío! Escribe el nombre de un proceso para ejecutarlo");
+                }
+                else if (ex is Win32Exception)
+                {
+                    MessageBox.Show("No se ha encontrado el proceso con el nombre que has especificado o no tienes los permisos suficientes");
+                }
+
             }
         }
     }
