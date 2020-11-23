@@ -43,7 +43,7 @@ namespace Ejercicio2
                 }
 
                 // Añado esas propiedades del proceso dentro una línea para el TextBox
-                    txtInfo.AppendText(String.Format("{0,-8}{1,-21}{2,-13}", procesosEnEjecucion[i].Id, nombre, titulo) + Environment.NewLine);
+                txtInfo.AppendText(String.Format("{0,-8}{1,-21}{2,-13}", procesosEnEjecucion[i].Id, nombre, titulo) + Environment.NewLine);
             }
         }
 
@@ -65,6 +65,7 @@ namespace Ejercicio2
                 txtInfo.AppendText("Título de la ventana principal : " + proceso.MainWindowTitle + Environment.NewLine);
                 txtInfo.AppendText("Momento en el que se inició el proceso : " + proceso.StartTime + Environment.NewLine);
                 txtInfo.AppendText(Environment.NewLine);
+
                 txtInfo.AppendText("----- HILOS -----" + Environment.NewLine + Environment.NewLine);
 
                 // Guardo en una variable los hilos del proceso en cuestión y los recorro
